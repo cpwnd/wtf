@@ -60,6 +60,7 @@ import (
 	"github.com/wtfutil/wtf/modules/status"
 	"github.com/wtfutil/wtf/modules/subreddit"
 	"github.com/wtfutil/wtf/modules/textfile"
+	"github.com/wtfutil/wtf/modules/telraam"
 	"github.com/wtfutil/wtf/modules/todo"
 	"github.com/wtfutil/wtf/modules/todo_plus"
 	"github.com/wtfutil/wtf/modules/transmission"
@@ -268,6 +269,9 @@ func MakeWidget(
 	case "subreddit":
 		settings := subreddit.NewSettingsFromYAML(moduleName, moduleConfig, config)
 		widget = subreddit.NewWidget(app, pages, settings)
+	case "telraam":
+		settings := telraam.NewSettingsFromYAML(moduleName, moduleConfig, config)
+		widget = telraam.NewWidget(app, pages, settings)
 	case "textfile":
 		settings := textfile.NewSettingsFromYAML(moduleName, moduleConfig, config)
 		widget = textfile.NewWidget(app, pages, settings)
