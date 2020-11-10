@@ -2,7 +2,6 @@ package telraam
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/rivo/tview"
@@ -49,9 +48,6 @@ func (widget *Widget) Refresh() {
 		if e == nil {
 			cameras = append(cameras, camera)
 		} else {
-			camera.Mac = id
-			camera.Segment_id = 0
-			cameras = append(cameras, camera)
 			widget.err = e
 		}
 	}
@@ -92,7 +88,7 @@ func (widget *Widget) content() (string, string, bool) {
 			strings.TrimPrefix(camera.SegmentLink(), "www."),
 		)
 
-		str += utils.HighlightableHelper(widget.View, row, idx, len(strconv.Itoa(camera.Mac)))
+		str += utils.HighlightableHelper(widget.View, row, idx, len(camera.Mac))
 	}
 
 	return title, str, false
