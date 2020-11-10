@@ -14,12 +14,12 @@ func GetCamera(cameraId int) (Camera, error) {
 
 	resp, err := apiRequest("cameras/" + strconv.Itoa(cameraId))
 	if err != nil {
-		return nil, err
+		return camera, err
 	}
 
 	err = utils.ParseJSON(&cameras, resp.Body)
 	if err != nil {
-		return nil, err
+		return camera, err
 	}
 
 	camera = cameras.Cameras[0]

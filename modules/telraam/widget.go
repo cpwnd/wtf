@@ -83,11 +83,11 @@ func (widget *Widget) content() (string, string, bool) {
 			`[%s]%2d. %d [lightblue](%s)[white]`,
 			widget.RowColor(idx),
 			idx+1,
-			camera.mac,
+			camera.Mac,
 			strings.TrimPrefix(camera.SegmentLink(), "www."),
 		)
 
-		str += utils.HighlightableHelper(widget.View, row, idx, len(strconv.Itoa(camera.mac)))
+		str += utils.HighlightableHelper(widget.View, row, idx, len(strconv.Itoa(camera.Mac)))
 	}
 
 	return title, str, false
