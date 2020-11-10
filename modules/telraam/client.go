@@ -9,19 +9,22 @@ import (
 )
 
 func GetCamera(cameraId int) (Camera, error) {
-	var cameras []Camera
+	var camera Camera
+	var cameras CameraResponse
 
 	resp, err := apiRequest("cameras/" + strconv.Itoa(cameraId))
 	if err != nil {
-		return cameras[0], err
+		return nil, err
 	}
 
 	err = utils.ParseJSON(&cameras, resp.Body)
 	if err != nil {
-		return cameras[0], err
+		return nil, err
 	}
 
-	return cameras[0], nil
+	camera = cameras.Cameras[0]
+
+	return camera, nil
 }
 
 /* -------------------- Unexported Functions -------------------- */
