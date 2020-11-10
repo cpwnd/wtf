@@ -12,13 +12,13 @@ type CameraResponse struct {
 
 // Camera represents a camera instance on teelram-api
 type Camera struct {
-	Mac               int    `json:"mac"`
-	Segment_id        int    `json:"segment_id"`
-	Status            string `json:"active"`
+	Mac               string `json:"mac"`
+	Segment_id        string `json:"segment_id"`
+	Status            string `json:"status"`
 	Last_data_package string `json:"last_data_package"`
 }
 
 // CommentLink return the link to the HackerNews story comments page
 func (camera *Camera) SegmentLink() string {
-	return fmt.Sprintf("%s%d", telraamSegmentPath, camera.Segment_id)
+	return fmt.Sprintf("%s%s", telraamSegmentPath, camera.Segment_id)
 }
