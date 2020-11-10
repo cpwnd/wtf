@@ -48,6 +48,11 @@ func (widget *Widget) Refresh() {
 		camera, e := GetCamera(id)
 		if e == nil {
 			cameras = append(cameras, camera)
+		} else {
+			camera.Mac = id
+			camera.Segment_id = 0
+			cameras = append(cameras, camera)
+			widget.err = e
 		}
 	}
 
@@ -80,7 +85,7 @@ func (widget *Widget) content() (string, string, bool) {
 		//u, _ := url.Parse(camera.segment_id)
 
 		row := fmt.Sprintf(
-			`[%s]%2d. %d [lightblue](%s)[white]`,
+			`[%s]%2d. %s [lightblue](%s)[white]`,
 			widget.RowColor(idx),
 			idx+1,
 			camera.Mac,
