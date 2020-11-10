@@ -6,7 +6,7 @@ const (
 	telraamSegmentPath = "https://telraam.net/en/location/"
 )
 
-// Story represents a story submission on HackerNews
+// Camera represents a camera instance on teelram-api
 type Camera struct {
 	mac               int    `json:"mac"`
 	segment_id        int    `json:"segment_id"`
